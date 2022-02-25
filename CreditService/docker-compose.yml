@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+    app:
+        container_name: creditservice
+        image: creditservice
+        build: ./
+        ports:
+            - "8082:8082"
+        depends_on:
+            - mongodb
+        networks:
+            - frontendservice_docker-network
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        restart: always
+        environment:
+            MONGO_INITDB_DATABASE: credit_database
+        ports:
+            - 27018:27017
+        networks:
+            - frontendservice_docker-network
+networks:
+    frontendservice_docker-network:
+        external: true
