@@ -1,0 +1,67 @@
+<!doctype html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!--start codes-->
+<div class="user">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt=""/>
+        <h1 class="user__title">Register For Credit Inquiry</h1>
+    </header>
+    <form th:method="post" th:action="@{/person/create}" th:object="${key_person}" class="form">
+
+        <input style="width:100%" th:field="*{personId}" type="text" class="form__input" th:placeholder="#{personId}">
+        <span style="width:100%" th:if="${#fields.hasErrors('personId')}" th:errors="*{personId}"></span>
+
+        <table style="width:100%">
+            <tr>
+                <td><input style="width:99%" th:field="*{personName}" type="text" class="form__input" th:placeholder="#{personName}"></td>
+                <td><input style="width:100%" th:field="*{personSurname}" type="text" class="form__input" th:placeholder="#{personSurname}"></td>
+            </tr>
+            <tr>
+                <td><span style="width:99%" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}"></span> </td>
+                <td><span style="width:100%" th:if="${#fields.hasErrors('personSurname')}" th:errors="*{personSurname}"></span></td>
+            </tr>
+        </table>
+
+
+        <table style="width:100%">
+            <tr>
+                <td><input style="width:99%" th:field="*{personIdentificationNumber}" type="text" class="form__input" th:placeholder="#{personIdentificationNumber}"></td>
+                <td><input style="width:99%" th:field="*{personPhoneNumber}" type="text" class="form__input" th:placeholder="#{personPhoneNumber}"></td>
+                <td><input style="width:100%" th:field="*{personMonthlyIncome}" type="text" class="form__input" th:placeholder="#{personMonthlyIncome}"></td>
+            </tr>
+            <tr>
+                <td><span style="width:99%" th:if="${#fields.hasErrors('personIdentificationNumber')}" th:errors="*{personIdentificationNumber}"></span></td>
+                <td><span style="width:99%" th:if="${#fields.hasErrors('personPhoneNumber')}" th:errors="*{personPhoneNumber}"></span></td>
+                <td><span style="width:100%" th:if="${#fields.hasErrors('personMonthlyIncome')}" th:errors="*{personMonthlyIncome}"></span></td>
+            </tr>
+        </table>
+
+        <table style="width:100%">
+            <tr>
+                <input style="width:100%" th:field="*{personCredicScore}" type="text" class="form__input" th:placeholder="#{personCredicScore}">
+                <span  style="width:100%" th:if="${#fields.hasErrors('personCredicScore')}" th:errors="*{personCredicScore}"></span>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr>
+                <button class="btn" style="width:49%" type="submit">Ask For Credit</button>
+                <button style="margin-right: 0px; width: 49%" class="btn" type="submit" th:formaction="@{/credit/status}" th:formmethod="get">Login</button>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

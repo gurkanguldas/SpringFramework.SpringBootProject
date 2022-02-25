@@ -1,0 +1,60 @@
+<!doctype html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Credit Status</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!--start codes-->
+<div class="user">
+    <form th:method="post" th:action="@{/person/save}"  th:object="${key_credit}" class="form">
+
+        <input type="hidden" th:object="${key_person}" th:field="*{personIdentificationNumber}">
+        <input type="hidden" th:object="${key_person}" th:field="*{personId}">
+        <input type="hidden" th:object="${key_person}" th:field="*{personCredicScore}">
+        <input type="hidden" th:object="${key_person}" th:field="*{personMonthlyIncome}">
+        <input type="hidden" th:object="${key_person}" th:field="*{personPhoneNumber}">
+        <input type="hidden" th:object="${key_person}" th:field="*{personSurname}">
+        <input type="hidden" th:object="${key_person}" th:field="*{personName}">
+
+        <div class="form__group">
+            <input class="form__input" th:field="*{personIdentificationNumber}" hidden></input>
+        </div>
+        <table style="width:100%">
+            <tr>
+                    <td><input style="width:100%" class="form__input" value="KREDI LIMITI: " readonly></td>
+                <td><input  style="width:100%" class="form__input" th:field="*{creditLimit}" readonly></td>
+            </tr>
+        </table>
+
+        <table style="width:100%">
+            <tr>
+                <td><input style="width:100%" class="form__input" value="KREDI DURUMU: " readonly></td>
+                <td>
+                <div class="form__group">
+                    <input class="form__input" th:if="*{creditStatus}" value="ONAY" readonly>
+                    <input class="form__input" th:unless="*{creditStatus}" value="RED" readonly>
+
+                    <input class="form__input" th:field="*{creditStatus}" hidden>
+                </div>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <button class="btn" style="width:49%" type="submit" >Register</button>
+                <button class="btn" style="margin-right: 0px; width: 49%" type="submit" th:formaction="@{/person/create}" th:formmethod="get" >Home Page</button>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
