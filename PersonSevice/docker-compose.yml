@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+    mysqldb:
+        image: mysql:5.7
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=person_database
+        ports:
+            - 3307:3306
+        networks:
+            - frontendservice_docker-network
+    app:
+        container_name: personservice
+        image: personservice
+        depends_on:
+            - mysqldb
+        build: ./
+        restart: always
+        ports:
+            - 8081:8081
+        networks:
+            - frontendservice_docker-network
+networks:
+    frontendservice_docker-network:
+        external: true
