@@ -18,28 +18,28 @@ public class PersonRestController
     @Autowired
     PersonService personService;
 
-    //http://localhost:8082/rest/person/get/people
+    //http://localhost:8081/rest/person/get/people
     @GetMapping("/get/people")
     public ResponseEntity<?>  getPeople()
     {
        return ResponseEntity.ok().body(personService.findAll());
     }
 
-    //http://localhost:8082/rest/person/get?id=1
+    //http://localhost:8081/rest/person/get?id=1
     @GetMapping("/get")
     public ResponseEntity<?> getPerson(@RequestParam("id")Long personId)
     {
         return ResponseEntity.ok().body(personService.find(personId));
     }
 
-    //http://localhost:8082/rest/person/get/identity?id=12345612345
+    //http://localhost:8081/rest/person/get/identity?id=12345612345
     @GetMapping("/get/identity")
     public ResponseEntity<?> getPersonIdentification(@RequestParam("id")Long personIdentity)
     {
         return ResponseEntity.ok().body(personService.findByPersonIdentificationNumber(personIdentity));
     }
 
-    //http://localhost:8082/rest/person/save
+    //http://localhost:8081/rest/person/save
     @PostMapping(value = "/save")
     public ResponseEntity<?> getPersonSave(@Valid @RequestBody PersonDto personDto, BindingResult bindingResult)
     {
@@ -47,7 +47,7 @@ public class PersonRestController
         return ResponseEntity.ok().build();
     }
 
-    //http://localhost:8082/rest/person/delete?id=1
+    //http://localhost:8081/rest/person/delete?id=1
     @DeleteMapping (value = "/delete")
     public ResponseEntity<?> getPersonDelete(@RequestParam("id")Long personId)
     {

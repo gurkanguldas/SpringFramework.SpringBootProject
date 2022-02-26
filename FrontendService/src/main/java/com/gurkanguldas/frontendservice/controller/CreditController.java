@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("credit")
 public class CreditController
 {
+    // http://localhost:8080/credit/status
     @GetMapping("/status")
     public String creditStatus(Model model)
     {
@@ -23,6 +24,7 @@ public class CreditController
         return "PersonUpdateDeleteAndCreditStatusPage";
     }
 
+    // http://localhost:8080/credit/status
     @PostMapping ("/status")
     public String creditStatus(@ModelAttribute("key_identity") CreditDto creditDto, Model model)
     {

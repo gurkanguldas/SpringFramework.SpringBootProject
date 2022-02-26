@@ -20,6 +20,7 @@ import javax.validation.Valid;
 @RequestMapping("/person")
 public class PersonController
 {
+    // http://localhost:8080/person/create
     @GetMapping(value = "/create")
     public String createPerson(Model model)
     {
@@ -27,6 +28,7 @@ public class PersonController
         return "PersonRegisterAndLoginPage";
     }
 
+    // http://localhost:8080/person/create
     @PostMapping(value = "/create")
     public String createPerson( Model model, @Valid @ModelAttribute("key_person") PersonDto personDto , BindingResult bindingResult)
     {
@@ -37,6 +39,7 @@ public class PersonController
         return "PersonsCreditStatusPage";
     }
 
+    // http://localhost:8080/person/update?personIdentificationNumber=13246512345
     @PostMapping(value = "/update")
     public String updatePerson( Model model, @RequestParam("personIdentificationNumber") Long id)
     {
@@ -49,6 +52,7 @@ public class PersonController
         return "PersonRegisterAndLoginPage";
     }
 
+    // http://localhost:8080/person/save
     @PostMapping("/save")
     public String savePersonAndCredit(@ModelAttribute("key_person") PersonDto personDto,
                                       @ModelAttribute("key_credit") CreditDto creditDto)
@@ -65,6 +69,8 @@ public class PersonController
 
         return "PersonRegisterAndLoginPage";
     }
+
+    // http://localhost:8080/person/delete?personIdentificationNumber=12345612345
     @DeleteMapping("/delete")
     public String deletePersonAndCredit(@RequestParam("personIdentificationNumber") Long id, Model model)
     {
