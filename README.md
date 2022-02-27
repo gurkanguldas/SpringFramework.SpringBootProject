@@ -66,6 +66,7 @@ PersonService Docker ve docker-compose dosyaları
 
 Docker image ve docker container üretimi ve servislerinin ayağa kaldırılması için;
 
+**NOT:** FrontendService containeri bir bridge network oluşturmakta ve diğer containerler oluşan networke bağlanmaktadır. Bu sebeble öncelikle **[FrontendService](https://github.com/gurkanguldas/InnovaBitirmeProjesi/tree/main/FrontendService)'in** ayağa kaldırılması gerekir.
 ```
 docker-compose up
 ```
